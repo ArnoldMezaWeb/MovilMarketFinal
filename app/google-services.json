@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "390403643409",
+    "project_id": "movilmarket-e8a02",
+    "storage_bucket": "movilmarket-e8a02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390403643409:android:7af76d184abaee45b339b0",
+        "android_client_info": {
+          "package_name": "com.upc.movilmarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390403643409-c6b2qhqbtajdq7d7mfgur9ctavt6gev9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.upc.movilmarket",
+            "certificate_hash": "4c81f81c703484a49b9a4dde3286883a6435f7b8"
+          }
+        },
+        {
+          "client_id": "390403643409-nn4ekintpl6kmkg3hfvn9sa74q65s1lr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvzqlXkVRfTJ65_JyFGazPJxoKhlhBO50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390403643409-nn4ekintpl6kmkg3hfvn9sa74q65s1lr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

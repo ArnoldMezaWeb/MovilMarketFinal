@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/nav_abarrotes"
+        android:title="Abarrotes"
+        android:icon="@drawable/ic__abr"
+        android:iconTint="@color/colorAccent" />
+
+    <item   android:id="@+id/nav_licores"
+        android:title="Licores"
+        android:icon="@drawable/ic__licor"/>
+
+    <item android:id="@+id/nav_bebidas"
+        android:title="Bebidas"
+        android:icon="@drawable/ic_bebidas"/>
+
+    <item android:id="@+id/nav_limpieza"
+        android:title="Limpieza"
+        android:icon="@drawable/ic_limpieza" />
+
+
+
+
+</menu>
