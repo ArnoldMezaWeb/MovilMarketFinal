@@ -11,25 +11,22 @@
         android:layout_width="match_parent"
         android:layout_height="86dp"
         android:layout_marginTop="1dp"
-        android:background="#ffff"
+        android:background="#D8EEF8"
+        app:itemIconSize="28dp"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/menunavegacion"
-        app:itemIconSize="28dp"
-        app:labelVisibilityMode="labeled"/>
+        app:menu="@menu/menunavegacion" />
 
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="181dp"
-        android:layout_marginBottom="367dp"
-        android:text="LICORES"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvlicores"
+        android:layout_width="match_parent"
+        android:layout_height="641dp"
+        android:layout_below="@+id/btnnavigation"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </RelativeLayout>

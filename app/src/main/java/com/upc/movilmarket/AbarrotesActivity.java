@@ -1,6 +1,5 @@
 package com.upc.movilmarket;
 
-import androidx.annotation.MenuRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,6 +28,7 @@ import com.upc.movilmarket.entidades.Productos;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class AbarrotesActivity extends AppCompatActivity {
     BottomNavigationView navigationView;
@@ -37,9 +38,12 @@ public class AbarrotesActivity extends AppCompatActivity {
     AdaptadorPersonalizado adaptador;
     FirebaseDatabase fbDatabase;
     DatabaseReference dbReference;
-    private TextView txtcontador;
-     private   Button btnsuma;
-     private Button   btnmenos;
+    Button add,editar,eliminar;
+
+
+
+
+
 
 
 
@@ -51,11 +55,39 @@ public class AbarrotesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abarrotes);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.ic_buy_bag3);
         inicializarFirebase();
         listraDatos();
         asignarReferencias();
         navigationView = findViewById(R.id.btnnavigation);
         navigationView.setItemIconTintList(null);
+
+        add = findViewById(R.id.add_producto);
+       /* add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nombre = filanombre.getText().toString();
+                String categoria = filacategoria.getText().toString();
+                Integer costo = Integer.parseInt(filacosto.getText().toString());
+
+
+                Productos p = new Productos();
+                p.setId(UUID.randomUUID().toString());
+                p.setNombre(nombre);
+                p.setCategoria(categoria);
+                p.setCosto(costo);
+
+                dbReference.child("Pedido").child(p.getId()).setValue(p);
+                //dbReference.push().child("Producto").setValue(nombre,downloaduri.toString());
+                //Productos gal = new Productos(nombre,categoria,costo);
+            }
+        });*/
+
+
+
+
+
 
 
         if (savedInstanceState != null) {
@@ -64,9 +96,6 @@ public class AbarrotesActivity extends AppCompatActivity {
 
 
         }
-
-
-
 
 
         datos = getIntent().getExtras();
@@ -122,6 +151,11 @@ public class AbarrotesActivity extends AppCompatActivity {
 
     }
 
+
+
+
+
+
     private  void listraDatos(){
         dbReference.child("Producto").addValueEventListener(new ValueEventListener() {
             @Override
@@ -150,6 +184,9 @@ public class AbarrotesActivity extends AppCompatActivity {
 
         rvProductos = findViewById(R.id.rvproductos);
         fltbtn = findViewById(R.id.btnadd);
+
+
+
         fltbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -190,8 +227,26 @@ public class AbarrotesActivity extends AppCompatActivity {
             case R.id.nav_agregar:
 
                 startActivity(new Intent(AbarrotesActivity.this, RegistroProducto.class));
+                getIntent().putExtra("titulo", "Sede Chorrillos");
 
                 return true;
+
+            case R.id.nav_mapa:
+                startActivity(new Intent(AbarrotesActivity.this, Maps.class));
+                return true;
+
+            case R.id.nav_editprov:
+                startActivity(new Intent(AbarrotesActivity.this, Proveedores.class));
+
+                return true;
+
+            case R.id.nav_prov:
+                startActivity(new Intent(AbarrotesActivity.this, AgregarProveedores.class));
+                return true;
+            case R.id.nav_menu:
+                startActivity(new Intent(AbarrotesActivity.this, AbarrotesActivity.class));
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
 

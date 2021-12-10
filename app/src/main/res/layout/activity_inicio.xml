@@ -5,55 +5,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InicioActivity"
-    android:padding="20dp">
+    >
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="338dp"
-        android:layout_height="292dp"
+        android:layout_width="420dp"
+        android:layout_height="276dp"
         android:layout_marginStart="129dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="129dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
         app:srcCompat="@drawable/logo" />
 
     <EditText
         android:id="@+id/txtusuarioinicio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="53dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:hint="Usuario"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="15dp"
         android:drawableStart="@drawable/ic_mail"
         android:drawablePadding="10sp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:layout_editor_absoluteX="99dp" />
+        android:ems="10"
+        android:hint="Usuario"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
         android:id="@+id/txtpassinicio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:drawableStart="@drawable/ic_password"
+        android:drawablePadding="10sp"
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        android:drawablePadding="10sp"
-        android:drawableStart="@drawable/ic_password"
-        app:layout_constraintTop_toBottomOf="@+id/txtusuarioinicio"
-        tools:layout_editor_absoluteX="100dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtusuarioinicio" />
 
     <Button
         android:id="@+id/btniniciar"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="59dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="42dp"
         android:layout_marginEnd="59dp"
-        android:text="INICIAR SESION"
         android:background="@drawable/border_buttom"
+        android:text="INICIAR SESION"
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,5 +78,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btniniciar" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="701dp"
+        android:layout_height="168dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/banner"
+        tools:layout_editor_absoluteY="-74dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

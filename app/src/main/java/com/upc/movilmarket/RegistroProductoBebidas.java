@@ -4,16 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -46,65 +42,25 @@ import java.util.UUID;
 
 import id.zelory.compressor.Compressor;
 
-public class RegistroProducto extends AppCompatActivity {
+public class RegistroProductoBebidas extends AppCompatActivity {
     FirebaseDatabase fbDatabase;
     DatabaseReference dbReference;
-    EditText txtNombre, txtcategoria, txtcosto;
-    Button btnRegistrar, btnseleccionar, btncamara;
+    EditText txtNombre, txtcategoria,txtcosto;
+    Button btnRegistrar,btnseleccionar,btncamara;
     ImageView foto;
     StorageReference storageReference;
     ProgressDialog cargando;
-
-    Bitmap thumb_bitmap = null;
-
     String rutaImagen;
-    boolean registrar = true;
-    String value1 = "";
-
+    Bitmap thumb_bitmap = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro_producto);
+        setContentView(R.layout.activity_registro_producto_bebidas);
         inicializarFirebase();
         asignarReferencias();
-        verificar();
-
-        if (ContextCompat.checkSelfPermission(RegistroProducto.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        != PackageManager.PERMISSION_GRANTED && ActivityCompat.
-        checkSelfPermission(RegistroProducto.this,
-                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(RegistroProducto.this,
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.CAMERA}, 1000);
-        }
-
-
     }
-
-    private void verificar() {
-
-
-
-        if (getIntent().hasExtra("id")){
-
-            registrar=false;
-            txtNombre.setText(getIntent().getStringExtra("nombres"));
-            txtcosto.setText(getIntent().getStringExtra("costos"));
-            txtcategoria.setText(getIntent().getStringExtra("categoria"));
-
-
-
-
-
-
-        }else {
-                registrar=true;
-        }
-
-    }
-
-    private void inicializarFirebase() {
+    private  void inicializarFirebase(){
 
         FirebaseApp.initializeApp(this);
         fbDatabase = FirebaseDatabase.getInstance();
@@ -113,7 +69,7 @@ public class RegistroProducto extends AppCompatActivity {
 
     }
 
-    private void asignarReferencias() {
+    private void asignarReferencias(){
 
         txtNombre = findViewById(R.id.txtnombreproveedor);
         txtcategoria = findViewById(R.id.txtdistritoproveedor);
@@ -121,6 +77,7 @@ public class RegistroProducto extends AppCompatActivity {
         btnRegistrar = findViewById(R.id.btnregistrarproveedor);
         foto = findViewById(R.id.imgproducto);
         btnseleccionar = findViewById(R.id.btnseleccionar);
+
         btncamara = findViewById(R.id.btn_tomarfoto);
 
         btncamara.setOnClickListener(new View.OnClickListener() {
@@ -131,10 +88,6 @@ public class RegistroProducto extends AppCompatActivity {
 
             }
         });
-
-
-
-
 
 
 
@@ -152,47 +105,19 @@ public class RegistroProducto extends AppCompatActivity {
 
         });
 
-        storageReference = FirebaseStorage.getInstance().getReference().child("Producto");
+        storageReference = FirebaseStorage.getInstance().getReference().child("Bebidas");
         cargando = new ProgressDialog(this);
 
         btnseleccionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CropImage.startPickImageActivity(RegistroProducto.this);
+                CropImage.startPickImageActivity(RegistroProductoBebidas.this);
 
             }
 
         });
 
     }
-
-    private void abrircamara() {
-
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-
-
-               File imagenARCHIVO = null;
-
-               try {
-                   imagenARCHIVO = crearImagen();
-
-               } catch (IOException ex) {
-
-                   ex.printStackTrace();
-
-               }
-
-               if (imagenARCHIVO != null) {
-
-                   Uri imagen= FileProvider.getUriForFile(this, "com.upc.movilmarket.fileprovider", imagenARCHIVO);
-                   intent.putExtra(MediaStore.EXTRA_OUTPUT, imagen);
-                   startActivityForResult(intent, 1);
-
-               }
-
-    }
-
 
 
 
@@ -207,7 +132,7 @@ public class RegistroProducto extends AppCompatActivity {
             CropImage.activity(imagenuri)
                     .setGuidelines(CropImageView.Guidelines.ON)
                     .setRequestedSize(640, 480)
-                    .setAspectRatio(2, 1).start(RegistroProducto.this);
+                    .setAspectRatio(2, 1).start(RegistroProductoBebidas.this);
 
 
         }
@@ -215,7 +140,7 @@ public class RegistroProducto extends AppCompatActivity {
         if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
 
-            if (resultCode ==RESULT_OK )  {
+            if (resultCode ==RESULT_OK){
 
                 Uri resultUri = result.getUri();
                 File url = new File(resultUri.getPath());
@@ -244,13 +169,13 @@ public class RegistroProducto extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        AlertDialog.Builder ventana = new AlertDialog.Builder(RegistroProducto.this);
+                        AlertDialog.Builder ventana = new AlertDialog.Builder(RegistroProductoBebidas.this);
                         ventana.setTitle("Mensaje Informativo");
                         ventana.setMessage("Se registro Correctamente");
                         ventana.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(RegistroProducto.this, AbarrotesActivity.class);
+                                Intent intent = new Intent(RegistroProductoBebidas.this, BebidasActivity.class);
                                 startActivity(intent);
                             }
                         });
@@ -264,13 +189,13 @@ public class RegistroProducto extends AppCompatActivity {
                     p.setCosto(costo);
                   */
 
-                    //dbReference.child("Producto").child(p.getId()).setValue(p);
+                        //dbReference.child("Producto").child(p.getId()).setValue(p);
 
 
-                    StorageReference  ref = storageReference.child("foto.jpg");
-                    UploadTask uploadTask = ref.putBytes(thumb_byte);
+                        StorageReference  ref = storageReference.child("foto.jpg");
+                        UploadTask uploadTask = ref.putBytes(thumb_byte);
 
-                    //subir imagen a storage
+                        //subir imagen a storage
                         Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                             @Override
                             public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -295,9 +220,9 @@ public class RegistroProducto extends AppCompatActivity {
                                 p.setCategoria(categoria);
                                 p.setCosto(costo);
                                 p.setFoto(downloaduri.toString());
-                                dbReference.child("Producto").child(p.getId()).setValue(p);
+                                dbReference.child("Bebidas").child(p.getId()).setValue(p);
                                 //dbReference.push().child("Producto").setValue(nombre,downloaduri.toString());
-                               //Productos gal = new Productos(nombre,categoria,costo);
+                                //Productos gal = new Productos(nombre,categoria,costo);
                                 cargando.dismiss();
 
 
@@ -314,56 +239,50 @@ public class RegistroProducto extends AppCompatActivity {
 
 
         }
-        /*if (requestCode == 1 && resultCode ==RESULT_OK){
-
-            //Bundle extras = data.getExtras();
-            Bitmap imgBitmap = BitmapFactory.decodeFile(rutaImagen);
-            foto.setImageBitmap(imgBitmap);
-        }*/
 
     }
 
 
-     private boolean capturardatos(){
+    private boolean capturardatos(){
 
 
-         String Nombre = txtNombre.getText().toString();
-         String Catergoria = txtcategoria.getText().toString();
+        String Nombre = txtNombre.getText().toString();
+        String Catergoria = txtcategoria.getText().toString();
 
 
 
 
 
-         boolean valida = true;
-         if (Nombre.equals("")) {
-             txtNombre.setError("Nombrees obligatorio");
-             valida = false;
-         }
-         if (Catergoria.equals("")) {
-             txtcategoria.setError("Categoria es obligatorio");
-             valida = false;
-         }
+        boolean valida = true;
+        if (Nombre.equals("")) {
+            txtNombre.setError("Nombrees obligatorio");
+            valida = false;
+        }
+        if (Catergoria.equals("")) {
+            txtcategoria.setError("Categoria es obligatorio");
+            valida = false;
+        }
 
-         try {
+        try {
 
 
-             int costo = Integer.parseInt(txtcosto.getText().toString() + "");
+            int costo = Integer.parseInt(txtcosto.getText().toString() + "");
 
-         return valida;
+            return valida;
 
-         }catch(
-                 NumberFormatException nfe)
+        }catch(
+                NumberFormatException nfe)
 
-         {
+        {
 
-             txtcosto.setError("Costo es obligatorio");
+            txtcosto.setError("Costo es obligatorio");
 
-         }
- return false;
+        }
+        return false;
 
-     }
+    }
 
-     private File crearImagen() throws IOException {
+    private File crearImagen() throws IOException {
 
         String nombreImagen = "foto_";
         File directorio = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
@@ -371,10 +290,31 @@ public class RegistroProducto extends AppCompatActivity {
 
         rutaImagen = imagen.getAbsolutePath();
         return imagen;
-     }
+    }
+    private void abrircamara() {
+
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
 
 
+        File imagenARCHIVO = null;
 
+        try {
+            imagenARCHIVO = crearImagen();
 
+        } catch (IOException ex) {
+
+            ex.printStackTrace();
+
+        }
+
+        if (imagenARCHIVO != null) {
+
+            Uri imagen= FileProvider.getUriForFile(this, "com.upc.movilmarket.fileprovider", imagenARCHIVO);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, imagen);
+            startActivityForResult(intent, 1);
+
+        }
+
+    }
 }

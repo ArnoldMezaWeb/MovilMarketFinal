@@ -4,8 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistroProducto"
+    tools:context=".AgregarProveedores"
     android:padding="20dp">
+
+    <EditText
+        android:id="@+id/txtdireccionproveedor"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/border_txt"
+        android:ems="10"
+        android:hint="Ingresar Direccion"
+        android:inputType="textPersonName"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:text="Direccion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtrucproveedor" />
 
     <TextView
         android:id="@+id/textView6"
@@ -24,7 +49,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/border_txt"
         android:ems="10"
-        android:hint="Ingrese nombre de producto"
+        android:hint="Ingrese nombre de proveedor"
         android:inputType="textPersonName"
         android:paddingHorizontal="12dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
-        android:text="Categoria"
+        android:text="Distrito"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtnombreproveedor" />
 
@@ -48,7 +73,7 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/border_txt"
         android:ems="10"
-        android:hint="Ingresar Categoria"
+        android:hint="Ingresar Distrito"
         android:inputType="textPersonName"
         android:paddingHorizontal="12dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
-        android:text="Costo"
+        android:text="RUC"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtdistritoproveedor" />
 
@@ -73,7 +98,7 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/border_txt"
         android:ems="10"
-        android:hint="Ingresar costo de producto"
+        android:hint="Ingresar RUC"
         android:inputType="number"
         android:paddingHorizontal="12dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +111,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="64dp"
         android:background="@drawable/border_buttom"
         android:text="REGISTRAR"
@@ -94,50 +119,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgproducto" />
-
-    <ImageView
-        android:id="@+id/imgproducto"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtrucproveedor" />
-
-    <Button
-        android:id="@+id/btnseleccionar"
-        android:layout_width="125dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/border_buttom"
-        android:text="Cargar Imagen"
-        android:textColor="#ffff"
-        android:textSize="11dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtrucproveedor" />
+        app:layout_constraintTop_toBottomOf="@+id/txtdireccionproveedor" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="411dp"
         android:layout_height="205dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_registro_producto"
+        app:srcCompat="@drawable/registroproveedor"
         tools:layout_editor_absoluteX="-24dp" />
 
-    <Button
-        android:id="@+id/btn_tomarfoto"
-        android:layout_width="125dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/border_buttom"
-        android:text="ABRIR CAMARA"
-        android:textColor="#ffff"
-        android:textSize="11dp"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnseleccionar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

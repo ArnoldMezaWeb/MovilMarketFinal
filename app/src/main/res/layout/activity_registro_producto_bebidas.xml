@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistroProducto"
+    tools:context=".RegistroProductoBebidas"
     android:padding="20dp">
 
     <TextView
@@ -131,7 +131,7 @@
         android:layout_width="125dp"
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/border_buttom"
         android:text="ABRIR CAMARA"
         android:textColor="#ffff"
